@@ -1,0 +1,4 @@
+.vercel
+.env*
+public/
+.DS_Store
