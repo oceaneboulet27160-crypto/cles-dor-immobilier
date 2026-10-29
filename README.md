@@ -26,3 +26,7 @@ Avant d'ajouter une photo, réduisez-la à 1024 pixels de large environ pour que
 - `vercel-build.sh` et `vercel.json` : préparation du site par Vercel lors de la mise en ligne (ne pas modifier).
 
 Les pages sont des ancres dans l'adresse : `#accueil`, `#biens`, `#projet-11`, `#investissement`, `#creation`, `#mentions-legales`, `#confidentialite`.
+
+## Collaboration
+
+Pour donner accès à quelqu'un : Settings → Collaborators de ce dépôt GitHub.
