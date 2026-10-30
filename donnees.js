@@ -95,6 +95,30 @@ window.PROJETS = [
     ]
   },
   {
+    "id": 42,
+    "titre": "Le Toucan",
+    "lieu": "Dieppe centre",
+    "annee": "2026",
+    "type": "T2 duplex",
+    "image": "APPART42/A.jpg",
+    "resume": "Transformation d'un ancien local en T2 duplex coloré avec mezzanine et verrière",
+    "surface": "30 m²",
+    "dureeTravaux": "3 mois",
+    "loyer": "-",
+    "prixAchat": "54 000 € (prorata)",
+    "coutTravaux": "40 000 € (avec ameublement)",
+    "description": "Ce projet a consisté à transformer un ancien local de stockage en un T2 en duplex plein de caractère. Nous avons conservé le parquet et les poutres d'origine, puis créé une mezzanine accessible par un escalier en colimaçon, ouverte sur le séjour grâce à une verrière. La chambre en hauteur s'habille d'un papier peint aux oiseaux exotiques, la cuisine joue la carte du vert et du bois, et la salle d'eau ose le rouge profond avec son carrelage zellige et sa vasque noire. Le logement a été livré entièrement meublé.",
+    "photos": [
+      "APPART42/A.jpg",
+      "APPART42/B.jpg",
+      "APPART42/C.jpg",
+      "APPART42/D.jpg",
+      "APPART42/E.jpg",
+      "APPART42/F.jpg",
+      "APPART42/G.jpg"
+    ]
+  },
+  {
     "id": 3,
     "titre": "Duplex Canopée",
     "lieu": "Secteur Hôtel de Ville, Rouen",
