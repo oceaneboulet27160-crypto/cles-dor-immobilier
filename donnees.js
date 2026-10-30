@@ -107,7 +107,7 @@ window.PROJETS = [
     "loyer": "-",
     "prixAchat": "54 000 € (prorata)",
     "coutTravaux": "40 000 € (avec ameublement)",
-    "description": "Ce projet a consisté à transformer un ancien local de stockage en un T2 en duplex plein de caractère. Nous avons conservé le parquet et les poutres d'origine, puis créé une mezzanine accessible par un escalier en colimaçon, ouverte sur le séjour grâce à une verrière. La chambre en hauteur s'habille d'un papier peint aux oiseaux exotiques, la cuisine joue la carte du vert et du bois, et la salle d'eau ose le rouge profond avec son carrelage zellige et sa vasque noire. Le logement a été livré entièrement meublé.",
+    "description": "Pensé comme un véritable lieu de vie chaleureux et plein de personnalité, cet appartement séduit par son ambiance lumineuse, ses espaces bien agencés et sa décoration originale. Les couleurs apportent du caractère à chaque pièce tout en créant une atmosphère à la fois dynamique, élégante et accueillante.",
     "photos": [
       "APPART42/A.jpg",
       "APPART42/B.jpg",
