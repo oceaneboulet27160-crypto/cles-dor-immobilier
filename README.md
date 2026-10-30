@@ -1,8 +1,14 @@
 # Site Clés d'Or Immobilier
 
-Site public : https://site-cles-dor-immobilier.vercel.app
+Site public : https://cles-dor-immobilier.netlify.app
 
-Chaque modification envoyée sur la branche `main` de ce dépôt est mise en ligne automatiquement par Vercel (projet `site-cles-dor-immobilier`).
+Le site est hébergé sur Netlify. Chaque modification fusionnée sur la branche `main` de ce dépôt est mise en ligne automatiquement en une à deux minutes. Pour chaque pull request, Netlify publie aussi un aperçu, pour vérifier le résultat avant de fusionner.
+
+## Modifier le site avec Claude Code
+
+1. Ouvrir https://claude.ai/code et choisir le dépôt `copilotimmo-ux/site-cles-dor-immobilier`.
+2. Écrire la demande en français (exemple : « Change le loyer du Cobalt à 820 €/mois »). Des photos peuvent être jointes.
+3. Claude prépare une pull request ; vérifier l'aperçu Netlify, puis cliquer sur **Merge** dans GitHub.
 
 ## Où modifier quoi
 
@@ -20,10 +26,12 @@ Avant d'ajouter une photo, réduisez-la à 1024 pixels de large environ pour que
 
 ## Fonctionnement
 
-- `index.html` : styles, en-tête, pied de page et contenu des pages fixes.
+Site statique sans framework : HTML, CSS (feuille Tailwind déjà générée, reprise de l'ancien site) et JavaScript.
+
+- `index.html` : styles, en-tête, pied de page et contenu des pages fixes. Il est écrit sans en-tête de document (`<!doctype>`, `<head>`) : la mise en ligne l'ajoute.
 - `app.js` : navigation entre les pages, carrousels, galeries, menu mobile, fenêtre de contact.
 - `donnees.js` : les biens et les galeries.
-- `vercel-build.sh` et `vercel.json` : préparation du site par Vercel lors de la mise en ligne (ne pas modifier).
+- `vercel-build.sh` : prépare le site dans le dossier `public` lors de la mise en ligne (utilisé par Netlify via `netlify.toml`, et par Vercel via `vercel.json`). Ne pas modifier.
 
 Les pages sont des ancres dans l'adresse : `#accueil`, `#biens`, `#projet-11`, `#investissement`, `#creation`, `#mentions-legales`, `#confidentialite`.
 
