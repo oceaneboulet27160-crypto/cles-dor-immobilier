@@ -48,6 +48,27 @@ window.PROJETS = [
     ]
   },
   {
+    "id": 41,
+    "titre": "Océan",
+    "lieu": "Dieppe centre",
+    "annee": "2026",
+    "type": "T3",
+    "image": "APPART41/A.jpg",
+    "resume": "T3 de caractère inspiré de l'univers marin, au cœur de Dieppe",
+    "surface": "60 m²",
+    "dureeTravaux": "3 mois",
+    "loyer": "-",
+    "prixAchat": "109 000 € (prorata)",
+    "coutTravaux": "65 000 €",
+    "description": "Un appartement de caractère, entre élégance et originalité. Laissez-vous séduire par cet appartement au charme unique et à la décoration soignée. Inspiré par l'univers marin, cet appartement vous plonge dans une atmosphère apaisante et dépaysante, où les nuances de bleu profond évoquent l'océan et invitent à la détente.",
+    "photos": [
+      "APPART41/A.jpg",
+      "APPART41/B.jpg",
+      "APPART41/C.jpg",
+      "APPART41/D.jpg"
+    ]
+  },
+  {
     "id": 2,
     "titre": "Le Montclair",
     "lieu": "Secteur Hôtel de Ville, Rouen",
@@ -913,27 +934,6 @@ window.PROJETS = [
       "APPART34/N.jpg",
       "APPART34/O.jpg",
       "APPART34/P.jpg"
-    ]
-  },
-  {
-    "id": 41,
-    "titre": "Océan",
-    "lieu": "Dieppe centre",
-    "annee": "2026",
-    "type": "T3",
-    "image": "APPART41/A.jpg",
-    "resume": "T3 de caractère inspiré de l'univers marin, au cœur de Dieppe",
-    "surface": "60 m²",
-    "dureeTravaux": "3 mois",
-    "loyer": "-",
-    "prixAchat": "109 000 € (prorata)",
-    "coutTravaux": "65 000 €",
-    "description": "Un appartement de caractère, entre élégance et originalité. Laissez-vous séduire par cet appartement au charme unique et à la décoration soignée. Inspiré par l'univers marin, cet appartement vous plonge dans une atmosphère apaisante et dépaysante, où les nuances de bleu profond évoquent l'océan et invitent à la détente.",
-    "photos": [
-      "APPART41/A.jpg",
-      "APPART41/B.jpg",
-      "APPART41/C.jpg",
-      "APPART41/D.jpg"
     ]
   },
   {
