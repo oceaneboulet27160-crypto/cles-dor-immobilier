@@ -6,7 +6,7 @@ Le site est hébergé sur Netlify. Chaque modification fusionnée sur la branche
 
 ## Modifier le site avec Claude Code
 
-1. Ouvrir https://claude.ai/code et choisir le dépôt `copilotimmo-ux/site-cles-dor-immobilier`.
+1. Ouvrir https://claude.ai/code et choisir le dépôt `lepatrimoinedumilitaire-png/site-cles-dor-immobilier`.
 2. Écrire la demande en français (exemple : « Change le loyer du Cobalt à 820 €/mois »). Des photos peuvent être jointes.
 3. Claude prépare une pull request ; vérifier l'aperçu Netlify, puis cliquer sur **Merge** dans GitHub.
 
