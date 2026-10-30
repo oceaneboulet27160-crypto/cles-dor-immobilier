@@ -1,0 +1,4 @@
+# Réglages de mise en ligne sur Netlify (mêmes que pour Vercel)
+[build]
+  command = "sh vercel-build.sh"
+  publish = "public"
