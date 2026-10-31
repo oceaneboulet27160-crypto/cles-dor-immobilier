@@ -16,6 +16,7 @@ Le site est hébergé sur Vercel (projet `cles-dor-immobilier`), relié à ce d�
 | Je veux changer… | Fichier |
 | --- | --- |
 | Un bien (titre, lieu, loyer, prix, description, photos), en ajouter ou en retirer | `donnees.js` (liste `PROJETS`) |
+| Un bien à vendre (page « À vendre »), en ajouter ou en retirer, le marquer vendu | `donnees.js` (liste `A_VENDRE`) |
 | Les biens du carrousel « Projets en vedette » de l'accueil | `donnees.js` (liste `VEDETTE`) |
 | Les images des galeries de la page Création | `donnees.js` (`GALERIES_CREATION`) |
 | Les textes de l'accueil, Investissement clef en main, Création, mentions légales, confidentialité | `index.html` (une balise `<template id="page-…">` par page) |
@@ -33,7 +34,7 @@ Site statique sans framework : HTML, CSS (feuille Tailwind déjà générée, re
 - `app.js` : navigation entre les pages, carrousels, galeries, menu mobile, fenêtre de contact.
 - `donnees.js` : les biens et les galeries.
 
-Les pages sont des ancres dans l'adresse : `#accueil`, `#biens`, `#projet-11`, `#investissement`, `#creation`, `#mentions-legales`, `#confidentialite`.
+Les pages sont des ancres dans l'adresse : `#accueil`, `#biens`, `#projet-11`, `#a-vendre`, `#vente-1`, `#investissement`, `#creation`, `#mentions-legales`, `#confidentialite`.
 
 ## Publication
 

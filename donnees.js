@@ -1138,3 +1138,14 @@ window.GALERIES_CREATION = {
     }
   ]
 };
+
+// =====================================================================
+// BIENS À VENDRE (page « À vendre »)
+// Même principe que PROJETS. Champs : id (numéro unique), titre, lieu,
+// type, prix, surface, pieces, chambres, etage, dpe, image (vignette),
+// resume (phrase sous la vignette), description, photos.
+// Options : "vendu": true affiche un badge « Vendu » ;
+//           "photosEntieres": true montre les photos sans les recadrer.
+// Photos dans img/VENTE<numéro>/ (chemin indiqué sans « img/ »).
+// =====================================================================
+window.A_VENDRE = [];

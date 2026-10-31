@@ -11,6 +11,7 @@
     `<svg xmlns="http://www.w3.org/2000/svg" width="${taille}" height="${taille}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-${nom} ${cls}">${window.ICONES[nom] || ''}</svg>`;
   const img = (p) => 'img/' + p;
   const projet = (id) => window.PROJETS.find((p) => String(p.id) === String(id));
+  const venteBien = (id) => (window.A_VENDRE || []).find((p) => String(p.id) === String(id));
   const ABS = 'position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0';
   const BOUTON_BASE = "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive";
 
@@ -157,15 +158,30 @@
     };
   }
 
+  // ------------------------------------------------- page « À vendre »
+  function pageVentes() {
+    const biens = window.A_VENDRE || [];
+    const cartes = biens.map((p) => `<a class="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" href="#vente-${p.id}"><div class="relative h-48 md:h-56 lg:h-64 overflow-hidden"><img alt="${esc(p.titre)}" class="object-cover group-hover:scale-105 transition-transform duration-300" style="${ABS}" src="${img(p.image)}" loading="lazy"/>${p.vendu ? '<div style="top:12px;left:12px" class="absolute bg-primary text-primary-foreground text-xs md:text-sm font-semibold px-3 py-1 rounded-full">Vendu</div>' : ''}</div><div class="p-4 md:p-5 lg:p-6"><div class="flex items-center gap-2 text-xs md:text-sm text-muted-foreground mb-2"><span>${esc(p.lieu)}</span>${p.surface ? `<span>•</span><span>${esc(p.surface)}</span>` : ''}</div><h3 class="font-serif text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">${esc(p.titre)}</h3><p class="text-xs md:text-sm text-muted-foreground mb-3">${esc(p.resume)}</p><div class="flex items-center justify-between"><span class="text-xs md:text-sm font-semibold text-primary">${esc(p.prix || p.type)}</span><span class="text-xs md:text-sm text-primary group-hover:translate-x-1 transition-transform">Voir le bien →</span></div></div></a>`).join('');
+    const vide = `<div class="text-center bg-card rounded-lg shadow-md max-w-2xl mx-auto p-8 md:p-12"><p class="font-serif text-xl md:text-2xl font-bold text-foreground mb-3">Aucun bien à vendre pour le moment</p><p class="text-muted-foreground text-sm md:text-base mb-6">De nouveaux biens arrivent régulièrement. Contactez-nous pour être informé en priorité.</p><button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-6 py-5 text-sm">Nous contacter</button></div>`;
+    return {
+      classe: 'min-h-screen bg-background pt-20 md:pt-24',
+      html: `<div class="container mx-auto px-4 md:px-6 py-8 md:py-12 lg:py-16"><div class="text-center mb-8 md:mb-12 lg:mb-16"><h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4">À Vendre</h1><p class="text-muted-foreground text-sm md:text-base lg:text-lg max-w-2xl mx-auto">Découvrez nos biens actuellement en vente : des logements de caractère, rénovés avec soin et prêts à vivre ou à louer.</p></div>${biens.length ? `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">${cartes}</div>` : vide}</div>`
+    };
+  }
+
   // ------------------------------------------------- fiche d'un bien
-  function pageProjet(p) {
+  function pageProjet(p, vente = false) {
     const photos = p.photos && p.photos.length ? p.photos : [];
     const n = photos.length;
     const val = (v) => esc(v || '-');
-    const fiches = [
+    const fiches = vente ? [
+      ['euro', 'Prix', p.prix], ['ruler', 'Surface', p.surface], ['house', 'Pièces', p.pieces],
+      ['house', 'Chambres', p.chambres], ['calendar', 'Étage', p.etage], ['zap', 'DPE', p.dpe]
+    ] : [
       ['ruler', 'Surface', p.surface], ['calendar', 'Annee', p.annee], ['calendar', 'Duree travaux', p.dureeTravaux],
       ['house', 'Loyer', p.loyer], ['euro', 'Prix achat', p.prixAchat], ['hammer', 'Cout travaux', p.coutTravaux]
     ];
+    const contacter = vente ? 'Nous contacter pour ce bien' : 'Nous contacter pour un projet similaire';
     const fichesMobile = fiches.map(([ic, l, v]) => `<div class="border border-border rounded-lg p-2.5 bg-muted/30"><div class="flex items-center gap-1.5 mb-0.5">${icone(ic, 'w-3.5 h-3.5 text-primary')}<p class="text-[10px] text-muted-foreground">${l}</p></div><p class="text-xs font-semibold">${val(v)}</p></div>`).join('');
     const fichesBureau = fiches.map(([ic, l, v]) => `<div class="border border-border rounded-lg p-3 bg-muted/30"><div class="flex items-center gap-2 mb-1">${icone(ic, 'w-4 h-4 text-primary')}<p class="text-xs text-muted-foreground">${l}</p></div><p class="text-sm font-semibold">${val(v)}</p></div>`).join('');
     const titre = esc(p.titre), description = esc(p.description);
@@ -174,15 +190,15 @@
     const cadrage = p.photosEntieres ? 'object-contain bg-muted' : 'object-cover';
     return {
       classe: 'min-h-screen bg-background pt-20 md:pt-24',
-      html: `<div class="container mx-auto px-4 md:px-6 py-6 md:py-8 lg:py-12"><button data-retour class="${BOUTON_BASE} hover:text-accent-foreground dark:hover:bg-accent/50 h-9 px-4 py-2 has-[>svg]:px-3 mb-4 md:mb-6 text-xs md:text-sm hover:bg-muted">${icone('arrow-left', 'w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2')}Retour aux projets</button><div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12"><div class="lg:col-span-2 space-y-6 md:space-y-8">
+      html: `<div class="container mx-auto px-4 md:px-6 py-6 md:py-8 lg:py-12"><button data-retour class="${BOUTON_BASE} hover:text-accent-foreground dark:hover:bg-accent/50 h-9 px-4 py-2 has-[>svg]:px-3 mb-4 md:mb-6 text-xs md:text-sm hover:bg-muted">${icone('arrow-left', 'w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2')}${vente ? 'Retour aux biens à vendre' : 'Retour aux projets'}</button><div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12"><div class="lg:col-span-2 space-y-6 md:space-y-8">
         <div class="md:hidden relative"><div class="relative overflow-hidden rounded-lg shadow-lg" data-zone><div class="flex" data-piste style="transition:transform 0.3s ease-out">${photos.map((ph, k) => `<img src="${img(ph)}" alt="${titre} ${k + 1}" draggable="false" class="w-full h-auto aspect-[4/3] ${cadrage} flex-shrink-0"/>`).join('')}</div><button data-photo-prec class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full">${icone('chevron-left', 'w-5 h-5')}</button><button data-photo-suiv class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full">${icone('chevron-right', 'w-5 h-5')}</button><div data-compteur class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">1 / ${n}</div></div><div class="flex justify-center items-center gap-1 mt-2" data-tirets></div>
           <div class="mt-4 space-y-1"><h1 class="font-serif text-xl font-bold text-foreground">${titre}</h1><p class="text-sm font-medium text-primary">${esc(p.type)}</p><div class="flex items-center gap-1.5 text-xs text-muted-foreground">${icone('map-pin', 'w-3 h-3')}<span>${esc(p.lieu)}</span></div></div>
           <div class="mt-4 border-t border-border pt-4"><h2 class="font-serif text-lg font-bold mb-2">Description</h2><p class="text-sm text-muted-foreground leading-relaxed">${description}</p></div>
           <div class="mt-4 grid grid-cols-2 gap-2">${fichesMobile}</div>
-          <button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full mt-4 text-xs py-3">Nous contacter pour un projet similaire</button></div>
+          <button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full mt-4 text-xs py-3">${contacter}</button></div>
         <div class="hidden md:flex gap-4"><div class="flex-1"><img data-principale src="${principale}" alt="${titre}" class="w-full h-auto aspect-[4/3] ${cadrage} rounded-lg shadow-lg"/></div><div class="relative w-28 lg:w-32 aspect-[4/3]"><div class="h-full overflow-y-auto flex flex-col gap-2 p-1 scrollbar-hide">${photos.map((ph, k) => `<img data-vignette="${k}" src="${img(ph)}" alt="${titre} ${k + 1}" loading="lazy" class="w-full aspect-[4/3] object-cover rounded shadow-md hover:shadow-lg transition-all cursor-pointer flex-shrink-0 "/>`).join('')}</div></div></div>
       </div><div class="hidden md:block space-y-6"><div><h1 class="font-serif text-3xl lg:text-4xl font-bold text-foreground mb-3">${titre}</h1><p class="text-base font-semibold text-primary mb-2">${esc(p.type)}</p><div class="flex items-center gap-2 text-sm text-muted-foreground">${icone('map-pin', 'w-4 h-4')}<span>${esc(p.lieu)}</span></div></div><div class="grid grid-cols-2 gap-3">${fichesBureau}</div></div></div>
-      <div class="hidden md:block mt-8 lg:mt-12 border-t border-border pt-6 lg:pt-8"><div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"><div class="lg:flex-1 lg:max-w-3xl"><h2 class="font-serif text-xl lg:text-2xl font-bold mb-3 lg:mb-4">Description du projet</h2><p class="text-sm lg:text-base text-muted-foreground leading-relaxed">${description}</p></div><div class="lg:flex-shrink-0"><button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full lg:w-auto text-sm py-5 lg:py-6 lg:px-8">Nous contacter pour un projet similaire</button></div></div></div></div>`,
+      <div class="hidden md:block mt-8 lg:mt-12 border-t border-border pt-6 lg:pt-8"><div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"><div class="lg:flex-1 lg:max-w-3xl"><h2 class="font-serif text-xl lg:text-2xl font-bold mb-3 lg:mb-4">${vente ? 'Description du bien' : 'Description du projet'}</h2><p class="text-sm lg:text-base text-muted-foreground leading-relaxed">${description}</p></div><div class="lg:flex-shrink-0"><button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full lg:w-auto text-sm py-5 lg:py-6 lg:px-8">${contacter}</button></div></div></div></div>`,
       apres: (racine) => {
         let i = 0;
         const piste = $('[data-piste]', racine), zone = $('[data-zone]', racine);
@@ -212,7 +228,7 @@
           else if (t.closest('[data-photo-suiv]')) aller(i + 1);
           else if (t.closest('[data-tiret]')) aller(+t.closest('[data-tiret]').dataset.tiret);
           else if (t.closest('[data-vignette]')) aller(+t.closest('[data-vignette]').dataset.vignette);
-          else if (t.closest('[data-retour]')) location.hash = '#biens';
+          else if (t.closest('[data-retour]')) location.hash = vente ? '#a-vendre' : '#biens';
         });
         if (n > 1) glisser(zone, piste, () => i, aller);
         aller(0);
@@ -230,6 +246,8 @@
     let m, vue = null;
     if ((m = h.match(/^projet-(\d+)$/)) && projet(m[1])) vue = pageProjet(projet(m[1]));
     else if (h === 'biens') vue = pageBiens();
+    else if ((m = h.match(/^vente-(\d+)$/)) && venteBien(m[1])) vue = pageProjet(venteBien(m[1]), true);
+    else if (h === 'a-vendre') vue = pageVentes();
     else {
       const t = document.getElementById('page-' + h) || document.getElementById('page-accueil');
       vue = { classe: t.dataset.classe, html: t.innerHTML };
