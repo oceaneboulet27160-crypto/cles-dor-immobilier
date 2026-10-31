@@ -50,6 +50,7 @@ window.PROJETS = [
   {
     "id": 41,
     "titre": "Océan",
+    "photosEntieres": true,
     "lieu": "Dieppe centre",
     "annee": "2026",
     "type": "T3",
