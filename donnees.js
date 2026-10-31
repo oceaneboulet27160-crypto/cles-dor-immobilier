@@ -1153,7 +1153,6 @@ window.A_VENDRE = [
   {
     "id": 1,
     "titre": "La Vaupalière",
-    "vendu": true,
     "lieu": "La Vaupalière",
     "type": "Maison",
     "prix": "350 000 €",
