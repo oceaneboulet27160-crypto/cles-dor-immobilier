@@ -1163,7 +1163,7 @@ window.A_VENDRE = [
     "dpe": "B",
     "image": "VENTE1/A.jpg",
     "resume": "Maison de 154 m² entièrement refaite à neuf, 6 pièces et 3 salles de bain",
-    "description": "Belle maison de caractère de 154 m², entièrement refaite à neuf. Elle offre 6 pièces et 3 salles de bain. Au rez-de-chaussée, un grand séjour lumineux s'ouvre sur une cuisine équipée avec îlot central, aux façades vert sauge et bois, avec des rangements intégrés sous l'escalier et de larges baies vitrées donnant sur le jardin. À l'étage, des chambres mansardées baignées de lumière, aux couleurs douces et papiers peints soignés, et des salles d'eau au carrelage graphique. Parquet clair et climatisation : un bien prêt à vivre.",
+    "description": "Belle maison de caractère de 154 m², entièrement refaite à neuf. Elle offre 6 pièces, dont 4 chambres, et 3 salles de bain. Au rez-de-chaussée, un grand séjour lumineux s'ouvre sur une cuisine équipée avec îlot central, aux façades vert sauge et bois, avec des rangements intégrés sous l'escalier et de larges baies vitrées donnant sur le jardin. Ce niveau accueille également une suite parentale avec sa salle de bain. À l'étage, trois chambres mansardées baignées de lumière, aux couleurs douces et papiers peints soignés, dont une avec salle de bain privative, ainsi qu'une salle d'eau séparée au carrelage graphique. Parquet clair et climatisation : un bien prêt à vivre.",
     "photos": [
       "VENTE1/A.jpg",
       "VENTE1/B.jpg",
