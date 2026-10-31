@@ -1155,7 +1155,7 @@ window.A_VENDRE = [
     "titre": "La Vaupalière",
     "lieu": "La Vaupalière",
     "type": "Maison",
-    "prix": "",
+    "prix": "350 000 €",
     "surface": "154 m²",
     "pieces": "6",
     "chambres": "",
