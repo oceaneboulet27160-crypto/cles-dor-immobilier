@@ -1170,6 +1170,7 @@ window.A_VENDRE = [
       "VENTE1/C.jpg",
       "VENTE1/D.jpg",
       "VENTE1/M.jpg",
+      "VENTE1/O.jpg",
       "VENTE1/E.jpg",
       "VENTE1/F.jpg",
       "VENTE1/G.jpg",
