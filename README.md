@@ -36,6 +36,14 @@ Site statique sans framework : HTML, CSS (feuille Tailwind déjà générée, re
 
 Les pages sont des ancres dans l'adresse : `#accueil`, `#biens`, `#projet-11`, `#a-vendre`, `#vente-1`, `#investissement`, `#creation`, `#mentions-legales`, `#confidentialite`.
 
+## Application installable
+
+Le site s'installe comme une application sur téléphone (iPhone : Safari → Partager → « Sur l'écran d'accueil » ; Android : Chrome → « Installer l'application »).
+
+- `manifest.webmanifest` : nom, couleurs et icônes de l'application.
+- `img/app/` : icônes (clé dans l'écusson, sur fond bleu marine).
+- `sw.js` : charge toujours la dernière version en ligne ; garde une copie pour l'ouverture hors connexion.
+
 ## Publication
 
 `vercel.json` indique à Vercel comment construire le site : il lance `vercel-build.sh`, qui prépare le dossier `public` (copie des fichiers et ajout de l'en-tête de document à `index.html`). Ne pas modifier ces deux fichiers.

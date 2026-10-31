@@ -307,6 +307,9 @@
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') contact.hidden = true; });
 
+  // ------------------------------------------- application installable
+  if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+
   majEntete();
   afficher();
 })();
