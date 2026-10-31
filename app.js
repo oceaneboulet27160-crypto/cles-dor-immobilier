@@ -176,11 +176,13 @@
     const val = (v) => esc(v || '-');
     const fiches = vente ? [
       ['euro', 'Prix', p.prix], ['ruler', 'Surface', p.surface], ['house', 'Pièces', p.pieces],
-      ['house', 'Chambres', p.chambres], ['calendar', 'Étage', p.etage], ['zap', 'DPE', p.dpe]
+      ['house', 'Chambres', p.chambres], ['sparkles', 'Salles de bain', p.sallesDeBain], ['zap', 'DPE', p.dpe]
     ] : [
       ['ruler', 'Surface', p.surface], ['calendar', 'Annee', p.annee], ['calendar', 'Duree travaux', p.dureeTravaux],
       ['house', 'Loyer', p.loyer], ['euro', 'Prix achat', p.prixAchat], ['hammer', 'Cout travaux', p.coutTravaux]
     ];
+    // pdf : document à télécharger (ex. projections 3D), chemin sans « img/ » ; pdfTitre : texte du bouton
+    const lienPdf = (cls) => p.pdf ? `<a href="${img(p.pdf)}" target="_blank" rel="noopener noreferrer" style="border:1px solid currentColor" class="${BOUTON_BASE} text-primary hover:bg-primary/10 h-9 px-4 ${cls}">${esc(p.pdfTitre || 'Voir le document (PDF)')}</a>` : '';
     const contacter = vente ? 'Nous contacter pour ce bien' : 'Nous contacter pour un projet similaire';
     const fichesMobile = fiches.map(([ic, l, v]) => `<div class="border border-border rounded-lg p-2.5 bg-muted/30"><div class="flex items-center gap-1.5 mb-0.5">${icone(ic, 'w-3.5 h-3.5 text-primary')}<p class="text-[10px] text-muted-foreground">${l}</p></div><p class="text-xs font-semibold">${val(v)}</p></div>`).join('');
     const fichesBureau = fiches.map(([ic, l, v]) => `<div class="border border-border rounded-lg p-3 bg-muted/30"><div class="flex items-center gap-2 mb-1">${icone(ic, 'w-4 h-4 text-primary')}<p class="text-xs text-muted-foreground">${l}</p></div><p class="text-sm font-semibold">${val(v)}</p></div>`).join('');
@@ -195,10 +197,10 @@
           <div class="mt-4 space-y-1"><h1 class="font-serif text-xl font-bold text-foreground">${titre}</h1><p class="text-sm font-medium text-primary">${esc(p.type)}</p><div class="flex items-center gap-1.5 text-xs text-muted-foreground">${icone('map-pin', 'w-3 h-3')}<span>${esc(p.lieu)}</span></div></div>
           <div class="mt-4 border-t border-border pt-4"><h2 class="font-serif text-lg font-bold mb-2">Description</h2><p class="text-sm text-muted-foreground leading-relaxed">${description}</p></div>
           <div class="mt-4 grid grid-cols-2 gap-2">${fichesMobile}</div>
-          <button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full mt-4 text-xs py-3">${contacter}</button></div>
+          <button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full mt-4 text-xs py-3">${contacter}</button>${lienPdf('w-full mt-2 text-xs py-3')}</div>
         <div class="hidden md:flex gap-4"><div class="flex-1"><img data-principale src="${principale}" alt="${titre}" class="w-full h-auto aspect-[4/3] ${cadrage} rounded-lg shadow-lg"/></div><div class="relative w-28 lg:w-32 aspect-[4/3]"><div class="h-full overflow-y-auto flex flex-col gap-2 p-1 scrollbar-hide">${photos.map((ph, k) => `<img data-vignette="${k}" src="${img(ph)}" alt="${titre} ${k + 1}" loading="lazy" class="w-full aspect-[4/3] object-cover rounded shadow-md hover:shadow-lg transition-all cursor-pointer flex-shrink-0 "/>`).join('')}</div></div></div>
       </div><div class="hidden md:block space-y-6"><div><h1 class="font-serif text-3xl lg:text-4xl font-bold text-foreground mb-3">${titre}</h1><p class="text-base font-semibold text-primary mb-2">${esc(p.type)}</p><div class="flex items-center gap-2 text-sm text-muted-foreground">${icone('map-pin', 'w-4 h-4')}<span>${esc(p.lieu)}</span></div></div><div class="grid grid-cols-2 gap-3">${fichesBureau}</div></div></div>
-      <div class="hidden md:block mt-8 lg:mt-12 border-t border-border pt-6 lg:pt-8"><div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"><div class="lg:flex-1 lg:max-w-3xl"><h2 class="font-serif text-xl lg:text-2xl font-bold mb-3 lg:mb-4">${vente ? 'Description du bien' : 'Description du projet'}</h2><p class="text-sm lg:text-base text-muted-foreground leading-relaxed">${description}</p></div><div class="lg:flex-shrink-0"><button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full lg:w-auto text-sm py-5 lg:py-6 lg:px-8">${contacter}</button></div></div></div></div>`,
+      <div class="hidden md:block mt-8 lg:mt-12 border-t border-border pt-6 lg:pt-8"><div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"><div class="lg:flex-1 lg:max-w-3xl"><h2 class="font-serif text-xl lg:text-2xl font-bold mb-3 lg:mb-4">${vente ? 'Description du bien' : 'Description du projet'}</h2><p class="text-sm lg:text-base text-muted-foreground leading-relaxed">${description}</p></div><div class="lg:flex-shrink-0 flex flex-col gap-3"><button data-contact class="${BOUTON_BASE} bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 has-[>svg]:px-3 w-full lg:w-auto text-sm py-5 lg:py-6 lg:px-8">${contacter}</button>${lienPdf('w-full lg:w-auto text-sm py-5 lg:py-6 lg:px-8')}</div></div></div></div>`,
       apres: (racine) => {
         let i = 0;
         const piste = $('[data-piste]', racine), zone = $('[data-zone]', racine);
