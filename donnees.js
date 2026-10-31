@@ -97,6 +97,7 @@ window.PROJETS = [
   {
     "id": 42,
     "titre": "Le Toucan",
+    "photosEntieres": true,
     "lieu": "Dieppe centre",
     "annee": "2026",
     "type": "T2 duplex",
