@@ -1144,7 +1144,7 @@ window.GALERIES_CREATION = {
 // Même principe que PROJETS. Champs : id (numéro unique), titre, lieu,
 // type, prix, surface, pieces, chambres, sallesDeBain, dpe, image (vignette),
 // resume (phrase sous la vignette), description, photos.
-// Options : "vendu": true affiche un badge « Vendu » ;
+// Options : "vendu": true affiche un filigrane « VENDU » sur les photos ;
 //           "pdf" (+ "pdfTitre") ajoute un bouton vers un document PDF ;
 //           "photosEntieres": true montre les photos sans les recadrer.
 // Photos dans img/VENTE<numéro>/ (chemin indiqué sans « img/ »).
@@ -1153,6 +1153,7 @@ window.A_VENDRE = [
   {
     "id": 1,
     "titre": "La Vaupalière",
+    "vendu": true,
     "lieu": "La Vaupalière",
     "type": "Maison",
     "prix": "350 000 €",
