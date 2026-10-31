@@ -152,7 +152,7 @@
   // --------------------------------------------------- page « Biens »
   function pageBiens() {
     const cartes = window.PROJETS.map((p) => p.enCours
-      ? `<div class="bg-card rounded-lg overflow-hidden shadow-md opacity-60"><div class="relative h-48 md:h-56 lg:h-64 overflow-hidden bg-muted flex items-center justify-center"><div class="text-center px-6"><div class="inline-block bg-primary/10 text-primary text-xs md:text-sm font-semibold px-4 py-2 rounded-full mb-3">En cours</div><p class="text-muted-foreground text-sm">Projet en cours de realisation</p></div></div><div class="p-4 md:p-5 lg:p-6"><h3 class="font-serif text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2">${esc(p.titre)}</h3><p class="text-xs md:text-sm text-muted-foreground">${esc(p.resume)}</p></div></div>`
+      ? `<div class="bg-card rounded-lg overflow-hidden shadow-md opacity-60"><div class="relative h-48 md:h-56 lg:h-64 overflow-hidden bg-muted flex items-center justify-center"><div class="text-center px-6"><div class="inline-block bg-primary/10 text-primary text-xs md:text-sm font-semibold px-4 py-2 rounded-full mb-3">En cours</div><p class="text-muted-foreground text-sm">Projet en cours de réalisation</p></div></div><div class="p-4 md:p-5 lg:p-6"><h3 class="font-serif text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2">${esc(p.titre)}</h3><p class="text-xs md:text-sm text-muted-foreground">${esc(p.resume)}</p></div></div>`
       : `<a class="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" href="#projet-${p.id}"><div class="relative h-48 md:h-56 lg:h-64 overflow-hidden"><img alt="${esc(p.titre)}" class="object-cover group-hover:scale-105 transition-transform duration-300" style="${ABS}" src="${img(p.image)}" loading="lazy"/></div><div class="p-4 md:p-5 lg:p-6"><div class="flex items-center gap-2 text-xs md:text-sm text-muted-foreground mb-2"><span>${esc(p.lieu)}</span><span>•</span><span>${esc(p.annee)}</span></div><h3 class="font-serif text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">${esc(p.titre)}</h3><p class="text-xs md:text-sm text-muted-foreground mb-3">${esc(p.resume)}</p><div class="flex items-center justify-between"><span class="text-xs md:text-sm font-semibold text-primary">${esc(p.type)}</span><span class="text-xs md:text-sm text-primary group-hover:translate-x-1 transition-transform">Voir le projet →</span></div></div></a>`).join('');
     return {
       classe: 'min-h-screen bg-background pt-20 md:pt-24',
@@ -180,8 +180,8 @@
       ['euro', 'Prix', p.prix], ['ruler', 'Surface', p.surface], ['house', 'Pièces', p.pieces],
       ['house', 'Chambres', p.chambres], ['sparkles', 'Salles de bain', p.sallesDeBain], ['zap', 'DPE', p.dpe]
     ] : [
-      ['ruler', 'Surface', p.surface], ['calendar', 'Annee', p.annee], ['calendar', 'Duree travaux', p.dureeTravaux],
-      ['house', 'Loyer', p.loyer], ['euro', 'Prix achat', p.prixAchat], ['hammer', 'Cout travaux', p.coutTravaux]
+      ['ruler', 'Surface', p.surface], ['calendar', 'Année', p.annee], ['calendar', 'Durée des travaux', p.dureeTravaux],
+      ['house', 'Loyer', p.loyer], ['euro', 'Prix d\'achat', p.prixAchat], ['hammer', 'Coût des travaux', p.coutTravaux]
     ];
     // pdf : document à télécharger (ex. projections 3D), chemin sans « img/ » ; pdfTitre : texte du bouton
     const lienPdf = (cls) => p.pdf ? `<a href="${img(p.pdf)}" target="_blank" rel="noopener noreferrer" style="border:1px solid currentColor" class="${BOUTON_BASE} text-primary hover:bg-primary/10 h-9 px-4 ${cls}">${esc(p.pdfTitre || 'Voir le document (PDF)')}</a>` : '';
