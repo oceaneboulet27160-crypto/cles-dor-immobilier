@@ -1172,7 +1172,11 @@ window.A_VENDRE = [
       "VENTE1/E.jpg",
       "VENTE1/F.jpg",
       "VENTE1/G.jpg",
-      "VENTE1/H.jpg"
+      "VENTE1/H.jpg",
+      "VENTE1/I.jpg",
+      "VENTE1/J.jpg",
+      "VENTE1/K.jpg",
+      "VENTE1/L.jpg"
     ],
     "photosEntieres": true,
     "pdf": "VENTE1/projections-3d.pdf",
