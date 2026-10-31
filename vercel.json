@@ -2,5 +2,10 @@
   "framework": null,
   "installCommand": "",
   "buildCommand": "sh vercel-build.sh",
-  "outputDirectory": "public"
+  "outputDirectory": "public",
+  "functions": {
+    "api/mcp.js": {
+      "includeFiles": "donnees.js"
+    }
+  }
 }

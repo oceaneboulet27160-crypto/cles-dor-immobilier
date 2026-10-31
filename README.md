@@ -44,6 +44,14 @@ Le site s'installe comme une application sur téléphone (iPhone : Safari → Pa
 - `img/app/` : icônes (clé dans l'écusson, sur fond bleu marine).
 - `sw.js` : charge toujours la dernière version en ligne ; garde une copie pour l'ouverture hors connexion.
 
+## Serveur MCP (interroger le site depuis Claude)
+
+Adresse : `https://cles-dor-immobilier.vercel.app/api/mcp` (code : `api/mcp.js`, lecture seule, sans mot de passe car les données sont déjà publiques).
+
+Dans Claude : Paramètres → Connecteurs → « Ajouter un connecteur personnalisé », coller l'adresse ci-dessus.
+
+Outils : `rechercher_realisations`, `details_realisation`, `biens_a_vendre`, `details_bien_a_vendre`, `statistiques`, `infos_agence`. Ils lisent `donnees.js` : toute modification du site est donc visible aussitôt par Claude.
+
 ## Publication
 
 `vercel.json` indique à Vercel comment construire le site : il lance `vercel-build.sh`, qui prépare le dossier `public` (copie des fichiers et ajout de l'en-tête de document à `index.html`). Ne pas modifier ces deux fichiers.
