@@ -1018,63 +1018,6 @@ window.PROJETS = [
 
     ],
     "enCours": true
-  },
-  {
-    "id": 38,
-    "titre": "Projet en cours",
-    "lieu": "Rouen",
-    "annee": "2025",
-    "type": "En cours",
-    "image": "placeholder.svg",
-    "resume": "Projet en cours de réalisation",
-    "surface": "-",
-    "dureeTravaux": "-",
-    "loyer": "-",
-    "prixAchat": "-",
-    "coutTravaux": "-",
-    "description": "Ce projet est actuellement en cours de réalisation. Les détails seront disponibles prochainement.",
-    "photos": [
-
-    ],
-    "enCours": true
-  },
-  {
-    "id": 39,
-    "titre": "Projet en cours",
-    "lieu": "Rouen",
-    "annee": "2025",
-    "type": "En cours",
-    "image": "placeholder.svg",
-    "resume": "Projet en cours de réalisation",
-    "surface": "-",
-    "dureeTravaux": "-",
-    "loyer": "-",
-    "prixAchat": "-",
-    "coutTravaux": "-",
-    "description": "Ce projet est actuellement en cours de réalisation. Les détails seront disponibles prochainement.",
-    "photos": [
-
-    ],
-    "enCours": true
-  },
-  {
-    "id": 40,
-    "titre": "Projet en cours",
-    "lieu": "Rouen",
-    "annee": "2025",
-    "type": "En cours",
-    "image": "placeholder.svg",
-    "resume": "Projet en cours de réalisation",
-    "surface": "-",
-    "dureeTravaux": "-",
-    "loyer": "-",
-    "prixAchat": "-",
-    "coutTravaux": "-",
-    "description": "Ce projet est actuellement en cours de réalisation. Les détails seront disponibles prochainement.",
-    "photos": [
-
-    ],
-    "enCours": true
   }
 ];
 
